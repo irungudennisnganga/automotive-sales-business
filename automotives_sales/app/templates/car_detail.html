@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Detail</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'car_detail.css' %}">
+</head>
+<body>
+    <div class="card">
+        <h1>Car Detail</h1>
+        <p>Make: {{ car.make }}</p>
+        <p>Model: {{ car.model }}</p>
+        <p>Year: {{ car.year }}</p>
+        <p>VIN: {{ car.vin }}</p>
+        <p>Mileage: {{ car.mileage }}</p>
+        <p>Color: {{ car.color }}</p>
+        <p>Body_style: {{ car.body_style }}</p>
+        <p>Transmission: {{ car.transmission }}</p>
+        <p>Fuel_type: {{ car.fuel_type }}</p>
+        <p>Engine_size: {{ car.engine_size }}</p>
+        <p>Drive_type: {{ car.drive_type }}</p>
+        <p>Trim_level: {{ car.trim_level }}</p>
+
+        <!-- Delete button -->
+        <form method="post" action="{% url 'delete_car' car.id %}">
+            {% csrf_token %}
+            <input type="submit" value="Delete" class="delete-btn">
+        </form>
+        
+        <!-- Update button -->
+        <a href="{% url 'update_car' car.id %}"><button class="update-btn">Update</button></a>
+    </div>
+</body>
+</html>
