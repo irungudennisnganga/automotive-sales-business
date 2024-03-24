@@ -1,12 +1,44 @@
-from django.shortcuts import render, redirect
-from .models import Car,Invoice
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, authenticate, logout
+from .forms import CarUpdateForm, InvoiceForm, SignUpForm
+from .models import Car, Invoice
 from .serializer import InvoiceSerializer
+from django.urls import reverse
 from rest_framework.response import Response
 from rest_framework import status
-from django.urls import reverse
-from django.shortcuts import render, redirect, get_object_or_404
-from .forms import CarUpdateForm,InvoiceForm
 from rest_framework.decorators import api_view
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()  # Refresh the form to get the latest user instance
+            user.first_name = form.cleaned_data.get('first_name')
+            user.last_name = form.cleaned_data.get('last_name')
+            user.email = form.cleaned_data.get('email')
+            user.save()
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+            login(request, user)
+            return redirect('home')
+    else:
+        form = SignUpForm()
+    return render(request, 'signup.html', {'form': form})
+def custom_logout(request):
+    logout(request)
+    return redirect('login')
 
 def home(request):
     return render(request, 'home.html') 
