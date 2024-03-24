@@ -25,16 +25,16 @@
 #     customer2_profile = Customer.objects.create(user=customer2, address='456 Elm St', phone_number='9876543210')
 
 #     # Create cars
-#     car1 = Car.objects.create(
-#         make='Toyota', model='Camry', year=2022, vin='12345678901234567',
-#         mileage=10000, color='Red', body_style='Sedan', transmission='Automatic',
-#         fuel_type='Gasoline', engine_size='2.5L', drive_type='Front-wheel drive', trim_level='LE'
-#     )
-#     car2 = Car.objects.create(
-#         make='Honda', model='Civic', year=2021, vin='23456789012345678',
-#         mileage=8000, color='Blue', body_style='Sedan', transmission='Manual',
-#         fuel_type='Gasoline', engine_size='2.0L', drive_type='Front-wheel drive', trim_level='Sport'
-#     )
+    # car1 = Car.objects.create(
+    #     make='Toyota', model='Camry', year=2022, vin='12345678901234567',
+    #     mileage=10000, color='Red', body_style='Sedan', transmission='Automatic',
+    #     fuel_type='Gasoline', engine_size='2.5L', drive_type='Front-wheel drive', trim_level='LE'
+    # )
+    # car2 = Car.objects.create(
+    #     make='Honda', model='Civic', year=2021, vin='23456789012345678',
+    #     mileage=8000, color='Blue', body_style='Sedan', transmission='Manual',
+    #     fuel_type='Gasoline', engine_size='2.0L', drive_type='Front-wheel drive', trim_level='Sport'
+    # )
 
 #     # Create sales
 #     sale1 = Sale.objects.create(

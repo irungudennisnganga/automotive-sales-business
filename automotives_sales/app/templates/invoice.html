@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All Invoices</h1>
+    <ul>
+    {% for invoice in invoices %}
+        <li><a href="{% url 'invoice_detail' invoice.pk %}">{{ invoice.receipt_number }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,14 +1,18 @@
-<!-- update_car.html -->
+{% extends 'base.html' %}
+{% load static %}
+  
 <!DOCTYPE html>
 <html lang="en">
+           
 <head>
+   
     <meta charset="UTF-8">
-    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'update_car.css' %}">
-
+    {% block content %} 
     <title>Update Car</title>
 </head>
+
 <body>
     {% comment %} <h1>Update Car</h1> {% endcomment %}
     <form method="post">
@@ -17,4 +21,7 @@
         <button class="update-btn" type="submit">Update Car</button>
     </form>
 </body>
+
+
 </html>
+{% endblock %}
