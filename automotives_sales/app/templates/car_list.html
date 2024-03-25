@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'car_list.css' %}">
     <title>Car List</title>
 </head>
 
@@ -14,7 +15,15 @@
     <h1>Car List</h1>
     <ul>
         {% for car in car_list %}
-            <li><a href="{% url 'car_detail' car.id %}">{{ car.make }} - {{ car.model }}</a></li>
+        
+        <div class='card'>
+            {% comment %} <li><a href="{% url 'car_detail' car.id %}">{{ car.make }} - {{ car.model }}</a></li> {% endcomment %}
+            <a href="{% url 'car_detail' car.id %}">
+            <img class='car-image' src="{{ car.image.url }}" alt="Car Image"><br />
+            <p>{{ car.make }} - {{ car.model }}</p>
+        </a>
+        </div>
+    
         {% endfor %}
         
     </ul>

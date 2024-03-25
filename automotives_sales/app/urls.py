@@ -1,7 +1,10 @@
 from django.urls import path
 from . import views
+from django.conf import settings
 
+from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -18,3 +21,9 @@ urlpatterns = [
     path('invoices/<int:invoice_id>/', views.invoice_detail, name='invoice_detail'),
     path('invoices/<int:invoice_id>/delete/', views.delete_invoice, name='delete_invoice'), 
 ]
+
+
+# if settings.DEBUG:
+#         urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+        
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)        

@@ -72,13 +72,15 @@ def update_car(request, car_id):
 
 def create_car(request):
     if request.method == 'POST':
-        form = CarCreateForm(request.POST)
+        form = CarCreateForm(request.POST, request.FILES) 
         if form.is_valid():
             form.save()
             return redirect('car_list')  # Redirect to the list of cars after successful creation
     else:
         form = CarCreateForm()
+        pass
     return render(request, 'create_car.html', {'form': form})
+
 def all_invoices(request):
     
     invoices = Invoice.objects.all()

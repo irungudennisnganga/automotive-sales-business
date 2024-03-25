@@ -25,7 +25,7 @@ class Car(models.Model):
     engine_size = models.CharField(max_length=20)
     drive_type = models.CharField(max_length=20)
     trim_level = models.CharField(max_length=100)
-    # image = models.ImageField(upload_to='car_images/')
+    image = models.ImageField(upload_to='media/')
     # country_of_origin = models.ForeignKey('Country', on_delete=models.SET_NULL, null=True)
     # import_document = models.OneToOneField('ImportDocument', on_delete=models.SET_NULL, null=True)
     # Add gallery - consider using a separate model for images

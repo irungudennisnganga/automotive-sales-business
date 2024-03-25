@@ -1,6 +1,6 @@
 
 .card {
-    width: 400px;
+    max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -8,7 +8,11 @@
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.car-image {
+    /* width: 200px !important; */
+    max-width: 100%;
+    /* Add any additional styling here */
+}
 .delete-btn {
     background-color: #ff4d4d; /* Red */
     color: white;
