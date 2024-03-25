@@ -40,7 +40,34 @@ The Automotive Sales Management Web Application is a comprehensive solution desi
 The Automotive Sales Management Web Application aims to provide automotive sales businesses with a centralized platform to streamline operations, enhance efficiency, and improve customer satisfaction. By offering a comprehensive set of features, the application empowers businesses to manage their sales processes effectively, optimize inventory management, and make data-driven decisions to drive growth and success.
 
 This project serves as a valuable tool for automotive sales businesses of all sizes, from small dealerships to large-scale enterprises, seeking to modernize their operations and stay competitive in today's dynamic marketplace.
+## Run Locally
 
+```bash 
+
+    git clone https://github.com/irungudennisnganga/automotive-sales-business
+```
+
+```bash 
+
+    pipenv install
+
+```
+
+```bash 
+
+    pipenv shell
+```
+
+```bash 
+
+    cd automotives_sales
+```
+
+```bash 
+
+    python manage.py runserver
+```
+After opening the link to the browser that is http://127.0.0.1:8000/ redirect to http://127.0.0.1:8000/app/
 ## Routes:
 
 1. **Home**
