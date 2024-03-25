@@ -55,6 +55,9 @@ This project serves as a valuable tool for automotive sales businesses of all si
    - Name: `login`
    - Description: Renders the login page and handles user authentication.
 
+    To login to the admin page use username as dennis password is irungu. 
+    To login to the normal dashboard signup to continue
+
 3. **Signup**
    - URL: `/signup/`
    - View: `views.signup_view`
