@@ -31,12 +31,12 @@
     <nav>
         <ul>
             
-            <li><a href="{% url 'home' %}">Home</a></li>
+            {% comment %} <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'car_list' %}">Cars</a></li>
             <li><a href="{% url 'all_invoices' %}">All Invoices</a></li>
-            <li><a href="{% url 'create_invoice' %}">Create Invoice</a></li>
-
-            {% comment %} {% if user.is_authenticated %}
+            <li><a href="{% url 'create_invoice' %}">Create Invoice</a></li> {% endcomment %}
+            
+            {% if user.is_authenticated %}
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'car_list' %}">Cars</a></li>
             <li><a href="{% url 'all_invoices' %}">All Invoices</a></li>
@@ -45,7 +45,7 @@
             {% else %}
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'signup' %}">Signup</a></li>
-            {% endif %} {% endcomment %}
+            {% endif %}
         </ul>
     </nav>
 
