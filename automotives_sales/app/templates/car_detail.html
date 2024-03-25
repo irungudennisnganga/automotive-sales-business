@@ -23,15 +23,18 @@
         <p>Engine_size: {{ car.engine_size }}</p>
         <p>Drive_type: {{ car.drive_type }}</p>
         <p>Trim_level: {{ car.trim_level }}</p>
-
-        <!-- Delete button -->
-        <form method="post" action="{% url 'delete_car' car.id %}">
-            {% csrf_token %}
-            <input type="submit" value="Delete" class="delete-btn">
-        </form>
-        
-        <!-- Update button -->
-        <a href="{% url 'update_car' car.id %}"><button class="update-btn">Update</button></a>
+        {% if user.is_staff %}
+            <!-- Delete button -->
+            <form method="post" action="{% url 'delete_car' car.id %}">
+                {% csrf_token %}
+                <input type="submit" value="Delete" class="delete-btn">
+            </form>
+            
+            <!-- Update button -->
+            <a href="{% url 'update_car' car.id %}"><button class="update-btn">Update</button></a>
+        {% else %}
+            {% comment %} <a href="{% url 'update_car' car.id %}"><button class="update-btn">Update</button></a> {% endcomment %}
+        {% endif %}
     </div>
 </body>
 </html>

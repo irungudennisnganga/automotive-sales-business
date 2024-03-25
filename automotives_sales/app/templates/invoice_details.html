@@ -3,26 +3,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% comment %} {% extends 'base.html' %} {% endcomment %}
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'invoice_detail.css' %}">
 </head>
 <body>
-    <h1>Invoice Detail</h1>
-    <p>Receipt Number: {{ invoice.receipt_number }}</p>
-    <p>Date of Purchase: {{ invoice.date_of_purchase }}</p>
-    <p>Seller Info: {{ invoice.seller_info }}</p>
-    <p>Buyer Info: {{ invoice.buyer_info }}</p>
-    <p>Vehicle Info: {{ invoice.vehicle_info }}</p>
-    <p>Payment Method: {{ invoice.payment_method }}</p>
-    <p>Amount Paid: {{ invoice.amount_paid }}</p>
+    <div class="card">
+        <h1>Invoice Detail</h1>
+        <p>Receipt Number: {{ invoice.receipt_number }}</p>
+        <p>Date of Purchase: {{ invoice.date_of_purchase }}</p>
+        <p>Seller Info: {{ invoice.seller_info }}</p>
+        <p>Buyer Info: {{ invoice.buyer_info }}</p>
+        <p>Vehicle Info: {{ invoice.vehicle_info }}</p>
+        <p>Payment Method: {{ invoice.payment_method }}</p>
+        <p>Amount Paid: {{ invoice.amount_paid }}</p>
 
-    <!-- Delete button -->
-    <form method="post" action="{% url 'delete_invoice' invoice.id %}">
-        {% csrf_token %}
-        <input type="submit" value="Delete">
-    </form>
+        <!-- Delete button -->
+        <form method="post" action="{% url 'delete_invoice' invoice.id %}">
+            {% csrf_token %}
+            <input type="submit" value="Delete" class="delete-btn">
+        </form>
+    </div>
 </body>
 </html>
 {% endblock %}

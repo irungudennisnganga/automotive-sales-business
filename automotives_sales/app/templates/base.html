@@ -1,8 +1,10 @@
 <!-- base.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Your Site Title{% endblock %}</title>
     <style>
@@ -30,26 +32,48 @@
     <!-- Navbar -->
     <nav>
         <ul>
-            
-            {% comment %} <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'car_list' %}">Cars</a></li>
-            <li><a href="{% url 'all_invoices' %}">All Invoices</a></li>
-            <li><a href="{% url 'create_invoice' %}">Create Invoice</a></li> {% endcomment %}
-            
+        
             {% if user.is_authenticated %}
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'car_list' %}">Cars</a></li>
-            <li><a href="{% url 'all_invoices' %}">All Invoices</a></li>
-            <li><a href="{% url 'create_invoice' %}">Create Invoice</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% if user.is_staff %}
+                <!-- Admin-specific/ Seller content -->
+                <div class="navbar">
+                    <p>Welcome, Admin!</p>
+                    <a href="{% url 'admin:index' %}" class="nav-link" target="_blank">Go to admin panel</a>
+
+                    <ul class="nav-links">
+                        <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                        <li><a href="{% url 'car_list' %}" class="nav-link">Cars</a></li>
+                        <li><a href="{% url 'create_car' %}" class="nav-link">Create Car</a></li>
+                        <li><a href="{% url 'all_invoices' %}" class="nav-link">All Invoices</a></li>
+                        <li><a href="{% url 'create_invoice' %}" class="nav-link">Create Invoice</a></li>
+                    </ul>
+                    <a href="{% url 'logout' %}" class="nav-link logout">Logout</a>
+                </div>
             {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'signup' %}">Signup</a></li>
+                <!-- Normal user content -->
+                <div class="navbar">
+                    <p>Welcome, {{ user.username }}!</p>
+                    <ul class="nav-links">
+                        <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                        <li><a href="{% url 'car_list' %}" class="nav-link">Cars</a></li>
+                    </ul>
+                    <a href="{% url 'logout' %}" class="nav-link logout">Logout</a>
+                </div>
             {% endif %}
+        {% else %}
+            <!-- Default content for unauthenticated users -->
+            <div class="navbar">
+                <ul class="nav-links">
+                    <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                    <li><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+                    <li><a href="{% url 'signup' %}" class="nav-link">Signup</a></li>
+                </ul>
+            </div>
+        {% endif %}
+        
+           
         </ul>
     </nav>
-
-    <!-- Content -->
     <div class="content">
         {% block content %}
         {% endblock %}

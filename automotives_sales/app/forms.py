@@ -30,3 +30,8 @@ class InvoiceForm(forms.ModelForm):
     class Meta:
         model = Invoice
         fields = '__all__'
+
+class CarCreateForm(forms.ModelForm):
+    class Meta:
+        model = Car
+        fields = '__all__'

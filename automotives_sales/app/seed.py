@@ -47,11 +47,11 @@
 #     )
 
 #     # Create invoices
-#     invoice1 = Invoice.objects.create(
-#         sale=sale1, receipt_number='INV-001', date_of_purchase='2023-01-15',
-#         seller_info='Admin', buyer_info='Customer 1', vehicle_info=car1,
-#         payment_method='Cash', amount_paid=25000.00
-#     )
+    # invoice1 = Invoice.objects.create(
+    #     sale=sale1, receipt_number='INV-001', date_of_purchase='2023-01-15',
+    #     seller_info='Admin', buyer_info='Customer 1', vehicle_info=car1,
+    #     payment_method='Cash', amount_paid=25000.00
+    # )
 #     invoice2 = Invoice.objects.create(
 #         sale=sale2, receipt_number='INV-002', date_of_purchase='2023-02-20',
 #         seller_info='Seller', buyer_info='Customer 2', vehicle_info=car2,

@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
-from .forms import CarUpdateForm, InvoiceForm, SignUpForm
+from .forms import CarUpdateForm, InvoiceForm, SignUpForm, CarCreateForm
 from .models import Car, Invoice
 from .serializer import InvoiceSerializer
 from django.urls import reverse
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
+
+
+def home(request):
+    return render(request, 'home.html')
 
 def login_view(request):
     if request.method == 'POST':
@@ -40,23 +44,18 @@ def custom_logout(request):
     logout(request)
     return redirect('login')
 
-def home(request):
-    return render(request, 'home.html') 
-
 def car_list(request):
     cars = Car.objects.all()
     return render(request, 'car_list.html', {'car_list': cars})
 
 def car_detail(request, car_id):
-    car = Car.objects.get(id=car_id)
+    car = get_object_or_404(Car, id=car_id)
     return render(request, 'car_detail.html', {'car': car})
 
 def delete_car(request, car_id):
     car = get_object_or_404(Car, id=car_id)
     car.delete()
     return redirect('car_list')
-
-# views.py
 
 def update_car(request, car_id):
     car = get_object_or_404(Car, id=car_id)
@@ -71,6 +70,15 @@ def update_car(request, car_id):
 
     return render(request, 'update_car.html', {'form': form, 'car': car})
 
+def create_car(request):
+    if request.method == 'POST':
+        form = CarCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('car_list')  # Redirect to the list of cars after successful creation
+    else:
+        form = CarCreateForm()
+    return render(request, 'create_car.html', {'form': form})
 def all_invoices(request):
     
     invoices = Invoice.objects.all()
@@ -105,13 +113,10 @@ def update_invoice(request, pk):
         serializer = InvoiceSerializer(instance=invoice)
     return render(request, 'update_invoice.html', {'form': serializer})
 
-def delete_invoice(request, pk):
-    try:
-        invoice = Invoice.objects.get(pk=pk)
-    except Invoice.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'DELETE':
-        invoice.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)  # Return a success response without content
-    return Response(status=status.HTTP_400_BAD_REQUEST) 
+def delete_invoice(request, invoice_id):
+   
+    invoice = get_object_or_404(Invoice, id=invoice_id)
+    invoice.delete()
+    return redirect('all_invoices')
+  

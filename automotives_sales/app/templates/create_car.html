@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'create_car.css' %}">
+    <title>Create Car</title>
+</head>
+<body>
+    <div class="card">
+        <h1>Create Car</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="make">Make:</label><br>
+            <input type="text" id="make" name="make"><br>
+
+            <label for="model">Model:</label><br>
+            <input type="text" id="model" name="model"><br>
+
+            <label for="year">Year:</label><br>
+            <input type="number" id="year" name="year"><br>
+
+            <label for="vin">VIN:</label><br>
+            <input type="text" id="vin" name="vin"><br>
+
+            <label for="mileage">Mileage:</label><br>
+            <input type="number" id="mileage" name="mileage"><br>
+
+            <label for="color">Color:</label><br>
+            <input type="text" id="color" name="color"><br>
+
+            <label for="body_style">Body Style:</label><br>
+            <input type="text" id="body_style" name="body_style"><br>
+
+            <label for="transmission">Transmission:</label><br>
+            <input type="text" id="transmission" name="transmission"><br>
+
+            <label for="fuel_type">Fuel Type:</label><br>
+            <input type="text" id="fuel_type" name="fuel_type"><br>
+
+            <label for="engine_size">Engine Size:</label><br>
+            <input type="text" id="engine_size" name="engine_size"><br>
+
+            <label for="drive_type">Drive Type:</label><br>
+            <input type="text" id="drive_type" name="drive_type"><br>
+
+            <label for="trim_level">Trim Level:</label><br>
+            <input type="text" id="trim_level" name="trim_level"><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -81,7 +81,7 @@
             <label for="vehicle_info">Vehicle Info:</label><br>
             <select id="vehicle_info" name="vehicle_info" required>
                 {% for car in cars %}
-                    <option value="{{ car.id }}">{{ car.make }} - {{ car.model }} - {{ car.year }}</option>
+                    <option value="{{ car.id }}">{{ car.id }} </option>
                 {% endfor %}
             </select><br>
 

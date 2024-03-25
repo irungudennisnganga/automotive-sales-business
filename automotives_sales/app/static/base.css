@@ -1,0 +1,28 @@
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logout {
+    margin-left: 10px; /* Adjust as needed */
+}
