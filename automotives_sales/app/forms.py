@@ -24,7 +24,12 @@ class SignUpForm(UserCreationForm):
 class CarUpdateForm(forms.ModelForm):
     class Meta:
         model = Car
-        fields = '__all__'
+        fields = ['make', 'model', 'year', 'vin', 'mileage', 'color', 'body_style', 'transmission', 'fuel_type', 'engine_size', 'drive_type', 'trim_level', 'image']
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Add the 'multipart/form-data' attribute to the form for handling file uploads
+        self.fields['image'].widget.attrs['enctype'] = 'multipart/form-data'
 
 class InvoiceForm(forms.ModelForm):
     class Meta:

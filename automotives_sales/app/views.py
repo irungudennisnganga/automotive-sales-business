@@ -61,7 +61,7 @@ def update_car(request, car_id):
     car = get_object_or_404(Car, id=car_id)
 
     if request.method == 'POST':
-        form = CarUpdateForm(request.POST, instance=car)
+        form = CarUpdateForm(request.POST,request.FILES, instance=car)
         if form.is_valid():
             form.save()
             return redirect('car_detail', car_id=car_id)
